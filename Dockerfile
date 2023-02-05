@@ -5,11 +5,11 @@ ARG USER_HOME_DIR="/root"
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 
 RUN yum update -y \
-  && yum install -y $JDK_URL \
+  && yum install -y unzip $JDK_URL \
   && mkdir -p /usr/share/maven \
-  && curl -fsSL -o /tmp/apache-maven.tar.gz ${BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
-  && tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1 \
-  && rm -f /tmp/apache-maven.tar.gz \
+  && curl -fsSL -o /tmp/apache-maven.zip ${BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.zip \
+  && unzip /tmp/apache-maven.zip -d /usr/share/maven \
+  && rm -f /tmp/apache-maven.zip \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn \
   && amazon-linux-extras install docker
 

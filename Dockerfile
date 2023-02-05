@@ -1,5 +1,4 @@
 FROM amazon/aws-cli
-MAINTAINER Yuqiang Huang <york@ibsettlecn.com>
 ARG JDK_URL=https://download.bell-sw.com/java/17.0.6+10/bellsoft-jdk17.0.6+10-linux-amd64.rpm
 ARG MAVEN_VERSION=3.8.7
 ARG USER_HOME_DIR="/root"
